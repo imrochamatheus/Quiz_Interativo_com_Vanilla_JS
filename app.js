@@ -23,6 +23,7 @@ const showScore = score => {
     scoreDiv.textContent = feedbackMessage
 
     quizContainer.prepend(scoreDiv)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 form.addEventListener('submit', event => {
