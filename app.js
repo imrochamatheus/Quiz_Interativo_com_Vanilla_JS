@@ -1,28 +1,12 @@
 const quizContainer = document.querySelector('.quiz')
+const feedback = document.querySelector('.feedback')
 const form = document.querySelector('.quiz-form')
 const correctAnswers = ['B', 'B', 'B', 'A', 'B']
 
 const showScore = score => {
+    feedback.querySelector('span').textContent = `${score}%`
+    feedback.setAttribute('display', 'block')
 
-    document.querySelector('.feedbackDiv') 
-    ? document.querySelector('.feedbackDiv').remove()
-    : ''
-    
-    const scoreDiv = document.createElement('div')
-
-    const colorClass = score >= 60 
-    ? 'bg-success'
-    : 'bg-danger'
-
-    const feedbackMessage = score >= 60 
-    ? `Score: ${score} | Eis aqui um verdadeiro amante do lolzinho. Parabéns =)`
-    : `Score: ${score} | Quem sabe na próxima... Vá praticar nos campos da justiça! =(`
-
-    scoreDiv.classList.add('feedbackDiv', 'py-2', 'text-center',
-     'text-white', 'lead', 'font-weight-normal', colorClass)
-    scoreDiv.textContent = feedbackMessage
-
-    quizContainer.prepend(scoreDiv)
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
