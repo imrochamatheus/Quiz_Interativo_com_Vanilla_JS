@@ -1,11 +1,18 @@
 const quizContainer = document.querySelector('.quiz')
 const feedback = document.querySelector('.feedback')
+const button = document.querySelector('.try_again')
 const form = document.querySelector('.quiz-form')
+
 const correctAnswers = ['B', 'B', 'B', 'A', 'B']
 
+const displayToggle = element => {
+    element.classList.toggle('d-none')
+}
+
 const showScore = score => {
+
     feedback.querySelector('span').textContent = `${score}%`
-    feedback.setAttribute('display', 'block')
+    displayToggle(feedback)
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
@@ -30,4 +37,16 @@ form.addEventListener('submit', event => {
     })
     
     showScore(score)
+})
+
+button.addEventListener('click', () => {
+
+    const radioButtons = document.querySelectorAll('[type=radio]')
+    displayToggle(feedback)
+    
+    radioButtons.forEach(button => {
+        button.checked
+        ? button.checked = 0
+        : ''
+    })
 })
