@@ -10,11 +10,23 @@ const displayToggle = element => {
 }
 
 const showScore = score => {
-
-    feedback.querySelector('span').textContent = `${score}%`
-    displayToggle(feedback)
-
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    
+    setTimeout(() => {
+        let scoreCount = 0
+        const scoreAnimation =  setInterval(() => {
+            
+            if (scoreCount === score ) {
+                clearInterval(scoreAnimation)
+            } 
+            
+            feedback.querySelector('span').textContent = `${scoreCount}%`
+            scoreCount++    
+
+        }, 10)
+
+        displayToggle(feedback)
+    },500)
 }
 
 form.addEventListener('submit', event => {
